@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Styling</title>
+  <style>
+    .text-here {
+      font-size: 55px;
+      font-family: sans-serif;
+      color: black;
+      text-decoration: none;
+      font-style: normal;
+      font-weight: normal;
+      line-height: normal;
+      text-align: left;
+      letter-spacing: normal;
+      word-spacing: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class='text-here' id='text-container'>This is some example text</div>
+
+  <input type="text" id="colorbox">
+  <button id="colorchange">Change Colour</button>
+
+  <br><br>
+
+  <input type="range" id="fontsize" min="10" max="100" value="55">
+
+  <br><br>
+
+  <button id="italic" class="stylebt">Italics</button>
+  <button id="underline" class="stylebt">Underline</button>
+  <button id="bold" class="stylebt">Bold</button>
+
+  <br><br>
+
+  <select id="list">
+    <option value="serif">Serif</option>
+    <option value="sans-serif">Sans-Serif</option>
+    <option value="monospace">Monospace</option>
+    <option value="cursive">Cursive</option>
+    <option value="fantasy">Fantasy</option>
+  </select>
+
+  <br><br>
+
+  <button id="getstyle">Get CSS</button>
+
+  <br><br>
+
+  <p id="css-props"></p>
+
+  <script>
+    // Get references to the necessary elements
+    const textContainer = document.getElementById('text-container');
+    const colorBox = document.getElementById('colorbox');
+    const colorChangeButton = document.getElementById('colorchange');
+    const fontSizeSlider = document.getElementById('fontsize');
+    const italicButton = document.getElementById('italic');
+    const underlineButton = document.getElementById('underline');
+    const boldButton = document.getElementById('bold');
+    const fontList = document.getElementById('list');
+    const getStyleButton = document.getElementById('getstyle');
+    const cssPropsElement = document.getElementById('css-props');
+
+    // Change text color on button click
+    colorChangeButton.addEventListener('click', () => {
+      const color = colorBox.value;
+      textContainer.style.color = color;
+    });
+
+    // Change font size on slider input
+    fontSizeSlider.addEventListener('input', () => {
+      const fontSize = fontSizeSlider.value;
+      textContainer.style.fontSize = `${fontSize}px`;
+    });
+
+    // Toggle text styles (italic, underline, bold)
+    italicButton.addEventListener('click', () => {
+      textContainer.style.fontStyle = textContainer.style.fontStyle === 'italic' ? 'normal' : 'italic';
+    });
+
+    underlineButton.addEventListener('click', () => {
+      textContainer.style.textDecoration = textContainer.style.textDecoration === 'underline' ? 'none' : 'underline';
+    });
+
+    boldButton.addEventListener('click', () => {
+      textContainer.style.fontWeight = textContainer.style.fontWeight === 'bold' ? 'normal' : 'bold';
+    });
+
+    // Change font family on dropdown selection
+    fontList.addEventListener('change', () => {
+      const fontFamily = fontList.value;
+      textContainer.style.fontFamily = fontFamily;
+    });
+
+    // Get CSS properties on button click
+    getStyleButton.addEventListener('click', () => {
+      const cssProps = `color: ${textContainer.style.color};, font-size: ${textContainer.style.fontSize};, font-family: ${textContainer.style.fontFamily};, text-decoration: ${textContainer.style.textDecoration};, font-style: ${textContainer.style.fontStyle};, font-weight: ${textContainer.style.fontWeight};`;
+      cssPropsElement.textContent = cssProps;
+    });
+  </script>
+</body>
+</html>
