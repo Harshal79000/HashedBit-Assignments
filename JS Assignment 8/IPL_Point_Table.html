@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPL SEASON 2022</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1 class="title">IPL Season 2022 Points</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Team</th>
+          <th>Matches</th>
+          <th>Won</th>
+          <th>Lost</th>
+          <th>Tied</th>
+          <th>NRR</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <script>
+      fetch('https://my-json-server.typicode.com/FreSauce/json-ipl/data')
+        .then(response => response.json())
+        .then(data => {
+          const sortedData = data.sort((a, b) => a.NRR - b.NRR);
+
+          sortedData.forEach(team => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                        <td>${team.No}</td>
+                        <td>${team.Team}</td>
+                        <td>${team.Matches}</td>
+                        <td>${team.Won}</td>
+                        <td>${team.Lost}</td>
+                        <td>${team.Tied}</td>
+                        <td>${team.NRR.toFixed(3)}</td>
+                        <td>${team.Points}</td>
+                    `;
+            document.getElementById('tableBody').appendChild(row);
+          });
+        });
+
+    </script>
+  </body>
+
+</html>
