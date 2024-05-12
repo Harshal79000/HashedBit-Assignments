@@ -1,37 +1,24 @@
-import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
-import {BrowserRouter as Router,Switch,Route,Link,} from "react-router-dom";
 import Choose from "./Choose";
-import CreateSurvey from "./CreateSurvey.js";
-import TakeSurvey from "./TakeSurvey.js";
-import Welcome from "./Welcome.js"
-import Response from "./Response.js"
+import CreateSurvey from "./CreateSurvey.jsx";
+import TakeSurvey from "./TakeSurvey.jsx";
+import Welcome from "./Welcome.jsx";
+import Response from "./Response.jsx";
 
 export default function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
-      <Switch>
-          <Route path="/createSurvey" exact>
-              <Link to="/"><h1>Survey Tiger</h1></Link>
-              <CreateSurvey />
-          </Route>
-          <Route path="/takeSurvey" exact>
-              <Link to="/"><h1>Survey Tiger</h1></Link>
-              <TakeSurvey />
-          </Route>
-          <Route path="/" exact>
-              <Link to="/"><h1>Survey Tiger</h1></Link>
-              <Choose />
-          </Route>
-          <Route path="/welcome" exact>
-              <Welcome/>
-          </Route>
-          <Route path="/response" exact>
-              <Response/>
-          </Route>
-      </Switch>
+        <Link to="/"><h1>Survey Form</h1></Link>
+        <Routes>
+          <Route path="/createSurvey" element={<CreateSurvey />} />
+          <Route path="/takeSurvey" element={<TakeSurvey />} />
+          <Route path="/" element={<Choose />} />
+          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/response" element={<Response />} />
+        </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }

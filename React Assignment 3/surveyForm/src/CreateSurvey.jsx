@@ -1,8 +1,8 @@
 import React , { Component, useState }  from "react";
 import "./App.css";
-import Publish from "./Publish.js"
-import Options from "./Options.js";
-import Input from "./Input.js";
+import Publish from "./Publish.jsx"
+import Options from "./Options.jsx";
+import Input from "./Input.jsx";
 
 const CreateSurvey=()=>{
   const [select, setselect] = useState(false);

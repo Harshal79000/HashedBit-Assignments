@@ -11,6 +11,7 @@ body{
   background-color: rgb(248, 250, 158);
   margin:100px 260px auto 290px;
   padding-top: 50px;
+  border-radius: 15px;
   padding-bottom: 50px;
 }
 
@@ -28,8 +29,10 @@ a:hover, a:visited, a:link, a:active {
 }
 button {
   margin:10px;
+  padding: 5px;
+  border-radius: 10px;
   font-size: 18px;
-  background-color: blue !important;
+  background-color: rgba(0, 0, 255, 0.587) !important;
 }
 
 
